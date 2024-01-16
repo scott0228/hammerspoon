@@ -1,14 +1,14 @@
-local log = hs.logger.new('ime.lua', 'debug')
+local logger = hs.logger.new('ime.lua')
 
 local function Chinese()
-    log.d("change to chinese")
-    log.d("current is :"..hs.keycodes.currentSourceID())
+    logger.d("change to chinese")
+    logger.df("current is: %s", hs.keycodes.currentSourceID())
     hs.keycodes.currentSourceID("im.rime.inputmethod.Squirrel.Hant")
 end
 
 local function English()
-    log.d("change to English")
-    log.d("current is :"..hs.keycodes.currentSourceID())
+    logger.d("change to English")
+    logger.df("current is: %s", hs.keycodes.currentSourceID())
     hs.keycodes.currentSourceID("com.apple.keylayout.ABC")
 end
 
@@ -46,5 +46,5 @@ hs.hotkey.bind({'ctrl', 'cmd'}, ".", function()
     .."\n"
     .."IM source id:  "
     ..hs.keycodes.currentSourceID())
-    log.d("App name: "..hs.window.focusedWindow():application():name())
+    logger.df("App name: %s", hs.window.focusedWindow():application():name())
 end)
