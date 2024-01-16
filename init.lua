@@ -1,7 +1,7 @@
 require "ime"
 require "reload"
 require "usb"
-require "line"
+require "window"
 
 hs.loadSpoon("CircleClock")
 hs.loadSpoon("BingDaily")

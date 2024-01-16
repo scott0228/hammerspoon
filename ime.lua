@@ -1,12 +1,14 @@
+local log = hs.logger.new('ime.lua', 'debug')
+
 local function Chinese()
-    hs.console.printStyledtext("chinese")
-    hs.console.printStyledtext(hs.keycodes.currentSourceID())
-    hs.keycodes.currentSourceID("im.rime.inputmethod.Squirrel.Rime")
+    log.d("change to chinese")
+    log.d("current is :"..hs.keycodes.currentSourceID())
+    hs.keycodes.currentSourceID("im.rime.inputmethod.Squirrel.Hant")
 end
 
 local function English()
-    hs.console.printStyledtext("English")
-    hs.console.printStyledtext(hs.keycodes.currentSourceID())
+    log.d("change to English")
+    log.d("current is :"..hs.keycodes.currentSourceID())
     hs.keycodes.currentSourceID("com.apple.keylayout.ABC")
 end
 
@@ -26,6 +28,23 @@ set_app_input_method('Code', English)
 set_app_input_method('AnyDesk', English)
 set_app_input_method('DBeaver', English)
 set_app_input_method('Spring Tool Suite 4', English)
+set_app_input_method('SpringToolSuite4', English)
+set_app_input_method('Eclipse', English)
+set_app_input_method('Firefox', English)
 set_app_input_method('LINE', Chinese)
 set_app_input_method('Telegram', Chinese)
+set_app_input_method('Raycast', English)
 -----------------------mine end-----------------------------
+
+-- helper hotkey to figure out the app path and name of current focused window
+hs.hotkey.bind({'ctrl', 'cmd'}, ".", function()
+    hs.alert.show("App path:        "
+    ..hs.window.focusedWindow():application():path()
+    .."\n"
+    .."App name:      "
+    ..hs.window.focusedWindow():application():name()
+    .."\n"
+    .."IM source id:  "
+    ..hs.keycodes.currentSourceID())
+    log.d("App name: "..hs.window.focusedWindow():application():name())
+end)
