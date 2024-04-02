@@ -34,6 +34,7 @@ set_app_input_method('Firefox', English)
 set_app_input_method('LINE', Chinese)
 set_app_input_method('Telegram', Chinese)
 set_app_input_method('Raycast', English)
+set_app_input_method('DBeaver', English)
 -----------------------mine end-----------------------------
 
 -- helper hotkey to figure out the app path and name of current focused window
